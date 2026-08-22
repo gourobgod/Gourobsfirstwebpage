@@ -57,7 +57,17 @@ hr {
     <p>🏔️ <b>Place:</b> Himalayas</p>
 
     <p>📚 <b>Subject:</b>Physics</p>
+<hr>
 
+<h3>🎮 Guess the Number</h3>
+
+<p>I'm thinking of a number from 1 to 10.</p>
+
+<input type="number" id="guess" min="1" max="10">
+
+<button onclick="checkGuess()">Guess</button>
+
+<p id="gameResult"></p>
 </div>
 
 <h1> Welcome to My World </h1>
@@ -153,6 +163,29 @@ setInterval(function() {
         seconds + " Seconds";
 
 }, 1000);
+        let secretNumber = Math.floor(Math.random() * 10) + 1;
+
+function checkGuess() {
+
+    let guess = document.getElementById("guess").value;
+
+    if (guess == secretNumber) {
+
+        document.getElementById("gameResult").innerHTML =
+            "🎉 You got it! The number was " + secretNumber + "!";
+
+        secretNumber = Math.floor(Math.random() * 10) + 1;
+
+    } else if (guess < secretNumber) {
+
+        document.getElementById("gameResult").innerHTML =
+            "⬆️ Too low! Try again.";
+         } else {
+
+        document.getElementById("gameResult").innerHTML =
+            "⬇️ Too high! Try again.";
+    }
+}
     </script>
 </body>
 </html>
